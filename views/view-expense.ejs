@@ -1,0 +1,35 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Expenses</h1>
+        <table class="expense-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% expenses.forEach(expense => { %>
+                    <tr>
+                        <td><%= expense.description || 'No description provided' %></td>
+                        <td>$<%= expense.amount %></td>
+                        <td><%= expense.date ? expense.date.toDateString() : 'No date provided' %></td>
+                        <td><a href="/edit-expense/<%= expense.id %>" class="edit-expense-btn">Edit</a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/dashboard" class="back-btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>

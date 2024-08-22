@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Expenses</h1>
+        <div class="dashboard">
+            <ul class="expense-list">
+                <% expenses.forEach(function(expense) { %>
+                    <li class="expense-item">
+                        <span><%= expense.description %></span>
+                        <span class="amount">$<%= expense.amount %></span>
+                    </li>
+                <% }) %>
+            </ul>
+            <% if (expenses.length === 0) { %>
+                <p>No expenses yet.</p>
+            <% } %>
+        </div>
+        <a href="/add-expense" class="add-expense-btn">Add Expense</a>
+        <a href="/view-expense" class="view-expense-btn">Edit Expense</a>
+    </div>
+</body>
+</html>

@@ -21,7 +21,7 @@ app.use(session({
 
 
 app.get('/', (req, res) => {
-  res.send('My code works!');
+  res.render('home');
 });
 
 app.get('/login', (req, res) => {

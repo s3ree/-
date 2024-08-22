@@ -152,6 +152,23 @@ app.post('/edit-expense/:id', async (req, res) => {
   }
 });
 
+app.post('/delete-expense/:id', async (req, res) => {
+  try {
+      const expenseId = req.params.id;
+      const expense = await Expense.findOne({ where: { id: expenseId } });
+
+      if (!expense) {
+          return res.status(404).send('Expense not found');
+      }
+
+      await expense.destroy();
+      res.redirect('/view-expense');
+  } catch (error) {
+      console.error('Error deleting expense:', error);
+      res.status(500).send('Error deleting expense');
+  }
+});
+
 sequelize.sync({ force: false }) 
   .then(() => {
     console.log('Database & tables created!');
